@@ -1,0 +1,133 @@
+Exercises
+
+1. In your own words, explain what clean code it and why it is important.
+
+A: Clean code involves using best practices and syntax while writing code. As developers, we need to think outside our own little box. We should make sure another developer can come in and understand what we’ve written. If we need to include comments for every line of code, we haven't written clean, readable code.
+
+Our code should follow best practices when it comes to nesting and syntax as well. We should name our variables and functions thoughtfully, so they clearly explain the data within and follow accepted naming conventions. Our functions shouldn't be so complex that the lines are nested 4 indents in. Typically, if we're keeping our code focused, simple and clean, we should be able to accomplish our intentions with less. Or we should break apart our functions to ensure they are each accomplishing only what they've been assigned to do.
+
+Keeping the DRY principle in mind at all times while writing code is a great way to keep our coding clean. Don't Repeat Yourself is a simple reminder that our functions should accomplish one action without getting too complicated. This not only assists other developers with understanding your code, but it greatly helps with debugging.
+
+
+2. Read this article about Toyota and their use of bad code. Although you may not yet understand all of the topics discussed, think about another commonly used object that relies on computers and explain what would happen if the code was not created to an acceptable standard.
+
+A: I think with the surge of Internet of Things, we are coming into contact with questionable code and products all day along without knowing it. I work as a cybersecurity project manager currently, and I see the mistakes and potential consequences more often than a normal consumer. In our kitchens alone, we have refrigerators, dishwashers, ovens and microwaves that can connect to the internet. I think the developers for these products are obviously focused on functionality with security as an after thought. If internet-connected ovens are susceptible to hacking, which almost everything is, a malicious threat could allow an oven to turn on and run to very high temperatures without supervision. This could lead to a fire, loss of property or even life. While a co-called "smart" refrigerator or dishwasher might not have such safety concerns, there's a potential for catastrophic damage to a home with water and flooding.
+
+3. Would you consider the following to be clean code? Explain why or why not. If not, refactor the code.
+
+A: I think there are some places for improvement. I would remove all the comments and use nesting to make it more readable. I would also split this into two functions: one for converting Fahrenheit to celsius and another for converting celsius to Fahrenheit. I'd also give the functions more descriptive names. Lastly I'm adjusting some spacing in the arithmetic.
+
+Refactored code:
+
+FUNCTION convertToFahrenheit(x, y)       
+ IF y = "F" THEN               
+   SET z to ( x − 32 ) * ( 5 / 9 )       
+ PRINT z
+END FUNCTION   
+
+FUNCTION convertToCelsius(x, y)                 
+ IF y = "C" THEN          
+   SET z to ( x * 1.8 ) + 32   
+ PRINT z                      
+END FUNCTION
+
+
+4. Would you consider the following to be clean code? Explain why or why not. If not, refactor the code.
+
+A: This one looks good to me! The function name describes the action the code is performing. The variables have descriptive names. The function is focused and has nice spacing.
+
+
+5. Using pseudocode, refactor the code for the following examples using the principles you have learned in this checkpoint.
+
+	a. The following function prints the subtotal of a customer's transaction and receives payment accordingly.
+
+FUNCTION checkOutCustomer(subTotal, discountRate, paymentType)
+   PRINT "Your total due is: " + subTotal * discountRate + (subTotal * tax)
+
+   IF paymentType = 'CASH' THEN
+     CALL getPayment RETURNING amount
+       PRINT "Change due: " + amount - subTotal * discountRate + (subTotal * tax)
+
+   ELSE IF paymentType = 'CREDIT CARD' THEN
+     CALL getPayment RETURNING amount
+       PRINT "Your credit card has been charged: " + subTotal * discountRate + (subTotal * tax)
+
+   END IF
+
+END FUNCTION
+
+
+	b. The following function checks out a book if there are no issues with the guest's account.
+
+FUNCTION checkoutBook(book, guest)
+ IF guest.accountActive AND NOT (guest.hasOverdueBooks) AND guest.outstandingFees = 0 THEN
+   APPEND book to guest.books
+   SET book.status to "Checked Out"
+   PRINT "Your books have been issued."
+ END IF
+ ELSE
+   PRINT "Unable to check out book."
+ END IF
+END FUNCTION
+
+
+	c. The following class is a code snippet that should support the transactions a customer can perform at an ATM.
+
+CLASS BankAccount
+
+ FUNCTION displayBalance
+    PRINT balance
+ END FUNCTION
+
+ FUNCTION deposit(amount)
+    SET balance to balance + amount
+ END FUNCTION
+
+ FUNCTION withdraw(amount)
+    IF balance > amount THEN
+      SET balance to balance - amount
+    END
+ END FUNCTION
+END
+
+CLASS BankOffers
+
+ FUNCTION creditCardOffer
+     IF NOT(customer.hasCreditCard) THEN
+         CALL offerCreditCard
+     END
+ END FUNCTION
+
+ FUNCTION checkStatus
+     IF NOT(customer.hasCheckingAccount) THEN
+         CALL offerCheckingAccount
+     END
+ END FUNCTION
+END
+
+
+Programming Questions
+
+6. Square Given an array of integers, find out whether the sum of the integers is a perfect square. If it is a perfect square, return the square root, otherwise return the sum.
+
+const isSquareRoot = (array) => {
+  var sum = array.reduce((sum, amount) => sum + amount);
+  if (Math.sqrt(sum) % 1 === 0){
+    console.log(Math.sqrt(sum));
+} else {
+  console.log(sum);
+}}
+
+
+7. Duplicate Given an array of integers, find out whether the array contains any duplicate elements. The function should return true if any value appears at least twice in the array, and false if every element is distinct.
+
+const hasDupes = (array) => {
+  for (let i = 0; i <= array.length; i++) {
+    for (let j = i + 1; j <= array.length; j++) {
+      if(array[i] == array[j]) {
+        return true;
+      }
+    }
+  }
+    return false;
+}
