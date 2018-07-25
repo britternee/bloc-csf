@@ -1,0 +1,67 @@
+Short Answer
+
+1. Why do programmers use pseudocode?
+
+A: Pseudocode can be used for brainstorming before writing actual code. We can write out how and what we want to accomplish with our code with pseudocode. This can help us to structure our thoughts before diving in with our actual code. It's a way to develop algorithms.
+
+2. If you run pseudocode on your computer, what would happen?
+
+A: Either nothing, or lots of errors. Pseudocode is meant to be read by humans; not by computers.
+
+
+Programming Assignment
+
+Write the following algorithms in pseudocode:
+
+1. Create a function that takes two numbers and prints out the greater number.
+
+INPUT first number
+INPUT second number
+IF the first number is greater than the second number THEN
+  PRINT first number
+IF the second number if greater than the first number THEN
+  PRINT second number
+ELSE 
+  PRINT "Please choose two different numbers."
+
+
+2. Create a function that prints out the numbers from 1 to 100.
+
+SET number to 1
+WHILE number is less than 100
+  PRINT number
+  ADD one to number
+ENDWHILE
+
+3. Create a function that searches for a specific entry in a phonebook.
+
+SET First Phonebook Entry to I
+WHILE I is NOT the specific entry
+  GET next entry
+  SET this entry to I
+ENDWHILE
+
+
+4. Using the pseudocode you wrote for the previous question, implement it in any computer language of your choice.
+
+const findEntry = (desiredEntry) => {
+  for ( i = 0; i <= pbook.length; i++ ) {
+    if (desiredEntry == pbook[i].firstName) {
+      return pbook[i].number;
+    } else {
+      console.log("No such entry.")
+    }
+  }
+}
+
+let pbook = [
+  { firstName: "Ted", lastName: "Bundy", number: "407-928-2136" },
+  { firstName: "Charlie", lastName: "Manson", number: "407-123-4567" },
+  { firstName: "Eileen", lastName: "Wuornos", number: "321-234-5678" },
+  { firstName: "Scott", lastName: "Peterson", number: "404-234-2345" },
+  { firstName: "Orenthal", lastName: "Simpson", number: "401-123-5432"}
+]
+
+let desiredEntry = "Charlie";
+
+console.log(findEntry(desiredEntry));
