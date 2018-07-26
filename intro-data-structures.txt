@@ -1,0 +1,39 @@
+Exercises
+
+1. A line of people at an amusement park ride.
+
+a.
+let inLine = ["Vivian", "Ava", "Josh", "Patrick", "Mike"];
+
+b.
+inLine.push("Mary");
+console.log(inLine);
+//returns ["Vivian", "Ava", "Josh", "Patrick", "Mike", "Mary"]
+
+c.
+console.log(inLine.indexOf("Josh"));
+//returns 2
+
+d.
+console.log(inLine.indexOf("Emily"));
+//returns -1
+
+e.
+inLine.splice(1, 0, "Melissa");
+console.log(inLine);
+//returns ["Vivian", "Melissa", "Ava", "Josh", "Patrick", "Mike", "Mary"]
+
+f.
+inLine.splice(4, 1);
+console.log(inLine);
+//returns ["Vivian", "Melissa", "Ava", "Josh", "Mike", "Mary"]
+
+
+2. Provide another real-world example that you can model using a data structure.
+
+A: At my current job, I work as a project manager in a cybersecurity firm. I think something that would be really helpful would be a data structure to track all of our consultants, their titles and their skillsets. I think this could be simply accomplished by creating an array of objects. Instead of trying to remember who knows how to do what, or looking up job titles every time I create documentation, I could simply search or manipulate the array to quickly get what I need.
+
+
+3. How would your data structure allow developers to access and manipulate the data?
+
+A: We could begin by building an array of objects. Each object would represent an employee in our penetration testing team. Each object would contain name, job title and skillset. As time goes on, we could add new employees using the .push() function. We can remove employees that are terminated with a .splice() function. We'd be able to grab which employees have a specific skillset using indexOf(). I believe we'd be able to sort alphabetically, or by any other element. If we took it a step further and included their email address and office number, when I create charter documents, I could populate that information in the document by writing a function that would first use indexOf() to find the person, then index[3], or wherever they land in the array, to return the values of the object.
