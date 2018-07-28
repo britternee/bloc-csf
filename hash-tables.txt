@@ -1,0 +1,107 @@
+Exercises
+
+1. What is a hash table?
+
+A: A hash table is a type of data structure that stores data in key-value pairs. Hash tables consist of an array (where the data is stored) and a hash function, which assigns indices for the array.
+
+
+2. What is hashing?
+
+A: Hashing is the conversion of a string into a numerical index. It's a technique for creating a unique identifier for a particular piece of data in our hash table.
+
+
+3. How does a hash table store data?
+
+A: Using a hashing function, we can convert our key to a hash code, which should be a unique, fixed-length number. With that hash code as our unique identifier, the hash table can store the data in an array using the new identifier to understand where (index) / in what order to store the data. The hour main steps are 1: Take the key; 2: Convert the key to a hash code using a hash function; 3: Mod the hash code to get an array index; and 4: Store the value in the array index.
+
+
+4. How are hash tables and objects different?
+
+A: Hash tables should store collections of similar data with a unique identifier. Objects could store different types of data clustered together.
+
+
+5. Determine whether you would use a hash table or an object to store each of the following pieces of data:
+
+- A list of pets and their unique names.
+
+A: Object (static number of values)
+
+- The name, age, and the birthday of your best friend.
+
+A: Object (static number of values)
+
+- The name and location of every company in a given city.
+
+A: Hash table (variable number of values)
+
+- All of the books checked out from a library by a particular individual.
+
+A: Hash table (variable number of values)
+
+- The primary and secondary phone numbers for a contact.
+
+A: Object (static number of values)
+
+
+6. Build a system that allows a sales associate to enter a customer's name, address, and phone number into the system and look up customers using their phone numbers. Store this information in a hash table.
+
+let hash = require('string-hash')
+
+class customerInfo {
+  constructor(name, address, phone) {
+    this.list = [];
+    this.name = name;
+    this.address = address;
+    this.phone = phone
+  }
+
+  get(phone) {
+    return this.list[hash(phone)]
+
+  set(name, address, phone) {
+    this.list[hash(phone)] = [name, address, phone];
+    }
+}
+
+
+7. Build a system that allows a store owner to track their store's inventory using a hash table for storage.
+
+let hash = require('string-hash')
+
+class storeInventory {
+  constructor(merch, inventory) {
+    this.list = [];
+    this.merch = merch;
+    this.inventory = inventory
+  }
+
+  get(inventory) {
+    return this.list[hash(inventory)]
+  }
+
+  set(merch, inventory) {
+    this.list[hash(merch)] = [merch, inventory];
+  }
+}
+
+
+8. Build a system that allows digital copies of newspapers to be entered and searched by publisher and publication date. Use hash tables to store the necessary data.
+
+let hash = require('string-hash')
+
+class newspaperData {
+  constructor(publisher, pubDate) {
+    this.list = [];
+    this.publisher = publisher;
+    this.pubDate = pubDate
+  }
+
+  get(publisher, pubDate) {
+    return this.list[hash(publisher, pubDate)]
+  }
+
+  set(publisher, pubDate) {
+    this.list[hash(publisher)] = [publisher, pubDate};
+    this.list[hash(pubDate)] = [publisher, pubDate}
+  }
+}
