@@ -1,0 +1,69 @@
+Exercises
+
+1. What is the main difference between a stack and a queue?
+
+A: A stack data structure implements a Last In First Out (LIFO) priority collection. It also has two functions that deal with adding and removing data: push and pop, respectively. A queue data structures prioritizes data on a First In First Out (FIFO) basis. 
+
+
+2. What are the similarities between stacks and queues?
+
+A: Stacks and Queues are both data structures that allow us to prioritize how we are dealing with our data. We can manipulate both stacks and queues to keep our systems from being overwhelmed with a great deal of input, jobs or requests.
+
+
+3. Imagine you are an engineer tasked with implementing the UNDO and REDO options in a word processor such as Microsoft Word. Which data structure would you use for each option and why?
+
+A: For UNDO, I would use a stack. Since stacks deal with data on a LIFO basis, the last action performed that should be undone should still be at the top of the stack. I'd use a queue for the REDO. Once an action comes off the UNDO stack, we can move it to the top of the REDO queue, ready to take action if necessary (FIFO).
+
+
+
+Programming Questions
+
+1. Given a string, reverse it using a stack. For example, the string "Bloc!" should be converted to "!colB".
+
+const reverseString = (string) => {
+  let stack = [];
+
+  for (let i = 0; i < string.length; i++) {
+    stack.push(string[i]);
+  }
+
+  let revStr = '';
+  while (stack.length > 0) {
+    revStr += stack.pop();
+  }
+
+  return revStr;
+}
+
+console.log(reverseString("Bloc!"));
+
+
+2. Implement the delete functionality of a stack using one queue. Make a FIFO data structure mirror the functionality of a LIFO data structure.
+
+
+const pop = (queue) => {
+   let newQueue = [];
+
+   for (let i = 0; i < queue.length-1; i++) {
+    newQueue.push(queue[i]);
+   }   
+  let deletedItem = queue[queue.length-1];
+
+  return deletedItem;
+}
+
+
+
+3. Fill in the methods for the following Queue class so that it will work as expected (FIFO).
+
+CLASS QUEUE
+ FUNCTION enqueue(element)
+   APPEND element to the end of the list
+ END FUNCTION
+
+ FUNCTION dequeue
+   SET temp to the first element
+   REMOVE FIRST element of list from list
+   RETURN temp
+ END FUNCTION
+END CLASS
