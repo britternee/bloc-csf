@@ -45,63 +45,72 @@ A: Object (static number of values)
 
 6. Build a system that allows a sales associate to enter a customer's name, address, and phone number into the system and look up customers using their phone numbers. Store this information in a hash table.
 
-let hash = require('string-hash')
-
 class customerInfo {
-  constructor(name, address, phone) {
-    this.list = [];
-    this.name = name;
-    this.address = address;
-    this.phone = phone
-  }
+    constructor(name, address, phone) {
+        this.list = [];
+        this.name = name;
+        this.address = address;
+        this.phone = phone
+    }
 
-  get(phone) {
-    return this.list[hash(phone)]
+    get(phone) {
+        return this.list[phone]
+    }
 
-  set(name, address, phone) {
-    this.list[hash(phone)] = [name, address, phone];
+    set(name, address, phone) {
+        this.list[phone] = [name, address, phone];
     }
 }
+
+let m = new customerInfo();
+m.set("Ron Weasley", "123 Main St", "321-789-4563");
+console.log(m.get("321-789-4563"));
 
 
 7. Build a system that allows a store owner to track their store's inventory using a hash table for storage.
 
-let hash = require('string-hash')
-
 class storeInventory {
-  constructor(merch, inventory) {
-    this.list = [];
-    this.merch = merch;
-    this.inventory = inventory
-  }
+    constructor(merch, inventory) {
+        this.list = [];
+        this.merch = merch;
+        this.inventory = inventory
+    }
 
-  get(inventory) {
-    return this.list[hash(inventory)]
-  }
+    get(inventory) {
+        return this.list[inventory]
+    }
 
-  set(merch, inventory) {
-    this.list[hash(merch)] = [merch, inventory];
-  }
+    set(merch, inventory) {
+        this.list[merch] = [merch, inventory];
+    }
 }
+
+let m = new storeInventory();
+m.set("Sedan", 2);
+m.set("SUV", 4);
+console.log(m.get("Sedan"))
 
 
 8. Build a system that allows digital copies of newspapers to be entered and searched by publisher and publication date. Use hash tables to store the necessary data.
 
-let hash = require('string-hash')
-
 class newspaperData {
-  constructor(publisher, pubDate) {
-    this.list = [];
-    this.publisher = publisher;
-    this.pubDate = pubDate
-  }
+    constructor(publisher, pubDate) {
+        this.list = [];
+        this.publisher = publisher;
+        this.pubDate = pubDate
+    }
 
-  get(publisher, pubDate) {
-    return this.list[hash(publisher, pubDate)]
-  }
+    get(publisher, pubDate) {
+        return this.list[publisher, pubDate]
+    }
 
-  set(publisher, pubDate) {
-    this.list[hash(publisher)] = [publisher, pubDate};
-    this.list[hash(pubDate)] = [publisher, pubDate}
-  }
+    set(publisher, pubDate) {
+        this.list[publisher] = [publisher, pubDate];
+        this.list[pubDate] = [publisher, pubDate]
+    }
 }
+
+let m = new newspaperData();
+m.set("Denver Post", "01012018");
+m.set("Daily Camera", "03042017");
+console.log(m.get("Denver Post", "01012018"));
