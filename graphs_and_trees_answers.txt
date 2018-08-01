@@ -1,0 +1,83 @@
+Exercises
+
+1. What is a binary tree and what makes it unique to other trees?
+
+A: A binary tree is a data structure made up of nodes, in which each of the nodes can have up to two child nodes: a left child and a right child. A node without children would be called a leaf node. What's really special about a binary search tree is how it's organized. All child nodes to the left should have a value less than the value of the parent node. All child nodes to the right of the parent node should have a value greater than the parent node.
+
+
+2. What is a heuristic?
+
+A: In programming, a heuristic is a best guess. In some searches or problems, we can't get every exact answer because there could be an infinite number of solutions, or entirely too many for the computer to process. In these cases, we determine what is "good enough." For example, in the shortest path scenario, there would be almost an infinite number of paths to check before we can determine which is truly the shortest. In this case, we could say that getting it right 85% of the time is good enough.
+
+
+3. What is another problem besides the shortest-path problem that requires the use of heuristics?
+
+A: I'm thinking that a Google search probably uses heuristics. Google can't always know exactly what a human is searching for, especially when we have typos or only type in a word or two. Google will place results in order of the likelihood that it pertains to what we are looking for. It's especially apparent when we do enter a misspelled word into Google, and Google responds "Did you mean....?"
+
+
+4. What is the difference between a depth-first search and a breadth-first search?
+
+A: A depth-first search involves starting at the root node and traveling all the way down a binary tree branch, looking for the desired node. If we don't find it, we back up a bit, and travel down the next branch; repeating until we find what we are looking for. A breadth-first search also starts at the root node, but we look at the neighbor nodes for our desired node. If it's not there, we move down a level and explore those neighbor nodes.
+
+
+5. Explain in your own words what an undirected, a-cyclic, unweighted graph is.
+
+A: This type of graph would likely be a tree. No loops can occur (a-cyclic). Because it's undirected, data or searches can travel in either direction, which removes linked lists from the arena. We won't be assigning a weight or cost to travel between nodes either.
+
+
+6. What kind of graph is a binary search tree?
+
+A: Directed, a-cyclic, unweighted graph
+
+
+
+Programming Exercises
+
+1. Given a Binary Search Tree and a value, write a function that checks to see whether the value exists within the tree.
+
+A: 
+- Start at the root node
+- Check if the current node is the desired value
+- If it is, stop there and return true. If it is not, check if the desired value is less than or greater than the current node. If the desired value is less than the current node, follow the left branch. If the desired value is greater than the current node, follow the right branch.
+- Continue until you've found the node, or gone through all nodes and determined the desired value doesn't exist in this BST.
+
+FUNCTION findValue(value)
+  SET temp to root
+  IF temp equals value
+    RETURN true
+    ELSE IF value is less than temp AND temp.left exists
+      SET temp.left to temp
+    ELSE IF value is greater than temp and temp.right exists
+      SET temp.right to temp
+    ELSE return "The value does not exist in this tree."
+  END IFELSE
+END FUNCTION
+
+
+2: Given a Binary Search Tree and two nodes, n1 and n2, write a function that finds the distance between the two nodes.
+
+A: 
+- First check if the nodes are the same
+- We'll want to determine the distance between root and n1 node
+- We'll also want to determine the distance between the root and n2
+- Connect these distance for distance between n1 and n2
+- This may not be the shortest distance, but it's A distance :)
+
+
+const findNodeDist = (root, n1, n2) => {
+  dist.right = findNodeDist(root.right, n1, n2);
+  dist.left = findNodeDist(rootleft, n1, n2);
+  
+  if (root === null || n1 === n2) {
+    return 0;
+  } else if (dist.left > 0 && dist.right > 0) {
+    return dist.left + dist.right;
+  } else if (dist.left > 0 && root == n1 || n2) {
+    return dist.left;
+  } else if (dist.right > 0 && root == n1 || n2) {
+    return dist.right;
+  } else if (dist.left === 0 && dist.right === 0) {
+    return 0;
+  }
+}
+
