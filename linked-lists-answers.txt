@@ -29,9 +29,13 @@ LinkedList.prototype.push = function(element) {
  IF the head node does not exist
    THEN SET head to node
  ELSE
+   SET current to head
+  WHILE current.next 
+   SET current to current.next 
+  ENDWHILE
    SET current.next to node
- }
-}
+  END IF
+END FUNCTION
 
 2. Given an unsorted singly linked list, remove all duplicates from the linked list.
 
