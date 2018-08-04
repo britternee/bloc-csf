@@ -1,0 +1,77 @@
+Exercises
+
+1. Using proper pseudo-code, describe the following primitive algorithms:
+
+- Making coffee
+
+IF coffeeBeans are whole THEN	
+  POUR coffeeBeans in grinder
+  GRIND coffeeBeans for 20 seconds
+  OPEN coffeeFilter
+  POUR coffeeBeans into filter
+ELSE
+  OPEN coffeeFilter
+  POUR coffeeBeans into filter
+ENDIF
+
+FILL waterChamber of coffeeMachine with water
+ADD coffeeFilter with coffeeBeans to coffeeMachine
+TURNON coffeeMachine
+   
+
+- Washing dishes
+
+IF washingMachine is full THEN
+  REMOVE all dishes
+ELSE fill washingMachine with dirty dishes
+ENDIF
+
+WHILE washingMachine is full of dirty dishes
+  FILL soapChamber with soap
+  CLOSE soapChamber
+  CLOSE AND LOCK washingMachine door
+  TURN washingMachine dial to ON
+ENDWHILE
+
+
+- Walking the dog
+
+IF outsideTemperature is less than 80 degrees Fahrenheit THEN	
+  ATTACH dogLeash to dogCollar
+  ATTACH dogCollar around dog's neck
+  MOVE dog to frontDoor
+  INSTRUCT dog to sit
+    IF dog sits THEN
+      OPEN frontDoor
+      GO outside 
+      CLOSE frontDoor
+    ELSE WAIT until dog sits
+    ENDIF
+  HOLD end of dogLeash
+  WALK away from frontDoor for 15 minutes
+  RETURN to frontDoor
+  OPEN frontDoor
+  ENTER house
+  REMOVE dogCollar from dog' neck
+  DETACH dogLeash from dogCollar
+
+ELSE wait until outsideTemperature is less than 80 degree Fahrenheit
+ENDIF
+
+
+
+
+2. As with the knot algorithm, there may be more than one way to solve the problem. It is essential to try to pick the best algorithm for a situation. Name three companies who created an algorithm that made them successful, e.g., Google's search algorithm. It doesn't need to be a tech example (such as a recipe or manufacturing a product). Google's algorithm produces more relevant results than other search engines; what about each of your cases make them stand out?
+
+A: SpaceX seems to have successfully created an algorithm for reusable rocket engines and parts. One of the biggest reasons the shuttle program at NASA ended was the cost of building new parts and repairing damage from previous missions. SpaceX has found a way to safely return components from their missions that can be reused on future missions. This has made spaceflight more affordable and commercially viable.
+
+Another example that comes to mind is Henry Ford's assembly line. Instead of a team building one car at a time, Henry Ford came up with the assembly line process, where each employee would perform their own task repeatedly on each car, which massively increased productivity and completion.
+
+Finally, a tech example is Instagram's algorithm for ordering posts in a feed. Yes, they've figured out the users I "like" most often, so now they share those posts with me first and foremost. However I really prefer a normal time-based timeline. This also prevents a lot of people from thinking outside their box and looking for new content they might've missed. Basically, Facebook and Instagram have decided what content we should consume. While it's obviously popular, I personally dislike it.
+
+
+3. Hypothesize about what constitutes an efficient algorithm versus an inefficient algorithm.
+
+A: I think an efficient algorithm should be focused. It should also be written with all of our usual programming methods in mind, especially Don't Repeat Yourself. We don't want to keep unnecessary steps in a process, especially if they are repetitive. If we think about DRY when writing algorithms, it'll help us stay focused on the actual goal and the best way to get there. 
+
+I think ensuring our algorithms are being executed in a finite amount of time is of the utmost importance as well. Seeing as it's part of the definition of an algorithm, we need to write code that is focused and efficient. We need to make sure there is a beginning and an end to the process; the algorithm must complete it's steps at some point.
