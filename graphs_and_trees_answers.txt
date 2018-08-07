@@ -41,17 +41,20 @@ A:
 - If it is, stop there and return true. If it is not, check if the desired value is less than or greater than the current node. If the desired value is less than the current node, follow the left branch. If the desired value is greater than the current node, follow the right branch.
 - Continue until you've found the node, or gone through all nodes and determined the desired value doesn't exist in this BST.
 
-FUNCTION findValue(value)
-  SET temp to root
-  IF temp equals value
-    RETURN true
-    ELSE IF value is less than temp AND temp.left exists
-      SET temp.left to temp
-    ELSE IF value is greater than temp and temp.right exists
-      SET temp.right to temp
-    ELSE return "The value does not exist in this tree."
-  END IFELSE
-END FUNCTION
+const findNode = (value) => {
+  let current = this.node;
+  while (current) {
+    if (value === current.value) {
+      return true;
+    }
+    if (value < current.value){
+      current = current.left;
+    } else {
+      current = current.right;
+    }
+  }
+  return false;
+}
 
 
 2: Given a Binary Search Tree and two nodes, n1 and n2, write a function that finds the distance between the two nodes.
