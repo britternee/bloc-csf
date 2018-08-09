@@ -1,0 +1,80 @@
+Exercises
+
+1.Define and compare recursion and iteration.
+
+A: Recursion is a programming technique where a function calls itself with parameters incrementally moving towards one of the base cases. Iteration is the programming technique of utilizing a loop to repeat a process.
+
+Recursive algorithms typically have base cases that prevent them from running infinitely. Iterative loops have have conditionals that keep them from running indefinitely - these are similar, but they're a bit different in execution. Recursion also calls itself, whereas iterative loops iterate a function against a data set. Recursive functions tend to run slower than iterative functions.
+
+
+2. Name five algorithms that are commonly implemented by recursion.
+
+A: Factorials, Fibonacci sequence, String reversal, Search, Puzzle Solving
+
+
+3. When should you use recursion, and when should you avoid recursion? Give examples for each.
+
+A: Recursion can be used when there isn't a simpler solution using iteration, as recursion is generally less performant. For example: the Towers of Hanoi game.
+
+
+4. Compare the recursive and iterative solutions to the three algorithms from the checkpoint (Factorial, Maximum, and Fibonacci). What is similar, and what is different?
+
+A: 
+- Factorial: Both solutions involve a "base case" for dealing with invalid numbers. They also both use equations that refer to a previous value. These are actually quite similar.
+
+- Maximum: In the iterative approach, we don't need to deal with a base case of an empty parameter value, like the recursive example does. In this case, the iterative approach is much simpler and performant. 
+
+- Fibonacci: Both solutions involve a "base case" for dealing with 0 and 1. The iterative solution deals with the loop by changing the "current" value. The recursive solution keeps adding previous rounds together.
+
+
+5. Given a multi-dimensional collection (such as an array) where the number of dimensions is unknown, write a recursive algorithm to count the number of items in the entire collection.
+
+const countItems = (array) => {
+    let count = 0;
+
+    for(var i=0; i<array.length; i++){
+        if(Array.isArray(array[i])){
+            count += countItems(array[i]);
+        } else {
+            count += 1;
+        }
+    }
+    return count;
+}
+
+console.log(countItems([4, 8, 15, 16, 23, 42]));
+
+
+6. A palindrome is a word or phrase whose spelling is the same either direction (e.g., racecar). Write a recursive algorithm to determine if a given word or phrase is a palindrome.
+
+const isPalindrome = (word) => {
+  word = word.toLowerCase();
+
+  if(word.length === 1 || word.length === 0){
+    return true;
+  }else if(word[0] !== word[word.length-1]){
+    return false;
+  }
+    return isPalindrome(word.slice(1,-1));
+}
+
+console.log(isPalindrome("racecar"));
+console.log(isPalindrome("Racecar"));
+console.log(isPalindrome("BRITtany"));
+
+
+7. Laura and Xander are going door-to-door around their block looking for their lost cat. Write a recursive algorithm showing one way they can visit every house on their block exactly once.
+
+let houses = ['3704 Chelsea', '3706 Chelsea', '3708 Chelsea', '3710 Chelsea', '3709 Chelsea', '3707 Chelsea', '3705 Chelsea', '3703 Chelsea']
+
+const visitHouses = (houses) => {
+	if(houses.length === 0){
+		return "All houses visited";
+	} else {
+		return visitHouses(houses.slice(1));
+	}
+}
+
+console.log(visitHouses(houses));
+
+
