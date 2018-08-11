@@ -1,0 +1,101 @@
+Exercises
+
+1. Write pseudocode for bubble sort.
+
+A:
+
+FUNCTION bubbleSort(collection)
+   REPEAT
+     SET swapped to false
+
+     FOR i = FIRST INDEX of collection to LAST INDEX of collection - 1
+      
+       IF collection[i] > collection[i + 1] THEN
+         SET tmp to collection[i]
+         SET collection[i] to collection[i + 1]
+         SET collection[i + 1] to tmp
+         SET swapped to true
+       END IF
+     END FOR
+   UNTIL swapped is FALSE
+
+   RETURN collection
+ END FUNCTION
+
+
+2. Write pseudocode for quicksort.
+
+A:
+
+FUNCTION partitionFunc(left, right, pivot)
+   leftPointer = left
+   rightPointer = right - 1
+
+   WHILE True DO
+      WHILE A[++leftPointer] < pivot DO          
+      ENDWHILE
+		
+      WHILE rightPointer > 0 && A[--rightPointer] > pivot DO        
+      ENDWHILE
+		
+      IF leftPointer >= rightPointer
+         BREAK
+      ELSE                
+         SWAP leftPointer,rightPointer
+      ENDIF
+		
+   ENDWHILE 
+	
+   SWAP leftPointer,right
+   RETURN leftPointer
+	
+ENDFUNCTION
+
+FUNCTION quickSort(left, right)
+
+   IF right-left <= 0
+      RETURN
+   ELSE     
+      pivot = A[right]
+      partition = partitionFunc(left, right, pivot)
+      quickSort(left,partition-1)
+      quickSort(partition+1,right)    
+   ENDIF		
+   
+ENDFUNCTION
+
+
+3. We talked about time complexity in a previous checkpoint, and how to get an idea of the efficiency of an algorithm. After looking at the pseudocode for the above sorting methods, identify why merge sort and quick sort are much more efficient than the others. Walking through each algorithm with a few sample collections may help.
+
+A: The time complexity for both merge sort and quick sort is O(n log n). While other sorting algorithms may have more efficient BEST case time complexities of O(n) (such as insertion sort or bubble sort), these also have much more inefficient WORST case complexities. Merge sort and quick sort hold tight on the O(n log n) complexity as a best, worst and average case.
+
+
+4. All of the sorts addressed in this checkpoint are known as comparison sorts. Research bucket sort and explain how it works. What is the ideal input for bucket sort?
+
+A: The steps for running a bucket sort algorithm are as follows:
+
+- Create an empty array
+- Loop through the original array and put each object in a bucket
+- Sort each of the non-empty buckets
+- Check the buckets in order and then put all objects back into the original array.
+
+Ideally, bucket sort assumes that the input is drawn from a somewhat uniform distribution.
+
+Example code (for my own reference):
+
+function bucketSort(array, key) {
+  key = key || function(x) { return x };
+  var buckets = [],
+    i, j, b, d = 0;
+  for (; d < 32; d +=4) {
+    for (1 = 16; i--;)
+      buckets[i] = [];
+    for (i = array.length; i--;)
+      buckets[(key(array[i]) >> d) & 15].push(array[i]);
+    for (b = 0; b< 16; b++)
+      for (j = buckets[b].length; j--;)
+        array[++i] = buckets[b][j];
+  }
+  return a;
+}
+    
