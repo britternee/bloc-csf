@@ -1,0 +1,81 @@
+Exercises
+
+Short Answer
+
+1. What is a real-life scenario that uses linear search?
+
+A: An real-life example of linear search could be looking for your car in an airport parking lot after a two week vacation. If you didn't make a note of where you parked, you're going to have to walk down every aisle, looking at each car one-by-one, until you find yours.
+
+
+2. What is a real-life scenario that uses binary search?
+
+A: An example of using binary search in real-life could be looking for a particular book at a bookstore. If all of the books in a particular genre are alphabetized by author, I can find M/N on the shelf and either go left or right depending on where my desired author's last name falls. I can eliminate half of the books each time with this method.
+
+
+3. Given the alphabetically sorted collection in this checkpoint, how many iterations would it take to find the value G using linear search?
+
+A: 7
+
+
+4. Given the alphabetically sorted collection in this checkpoint, how many iterations would it take to find the value G using binary search?
+
+A: 3
+
+
+5. Given an unsorted collection of a million items, which algorithm would you choose between linear search and binary search? Explain your reasoning.
+
+A: My instinct is to say we should use linear search because our collection is NOT sorted. However, a million items is a very large number t search through one-by-one. It might be more efficient to sort the collection and then use binary search in this particular case due to the very large number of items. But linear search is generally the way to go with unsorted arrays.
+
+
+6. Given a sorted collection of a million items, which algorithm would you choose between linear search and binary search? Explain your reasoning.
+
+A: I would use binary search. With linear search we would have to go through the array, one item at a time. If we are searching for item 999,999, this is going to take a long time. With binary search, we find the middle item, determine if our desired item is greater than or lesser than...and then we immediately eliminate 500,000 items from our search. We keep halving this number until we find our desired item, but this is a much more efficient route to take over linear search.
+
+
+
+Programming Assignment
+
+1.You and a friend have set a wager to see who can find the word "Albatross" in the dictionary the fastest. Write a program to allow you to win the bet.
+
+A:
+
+const wordSearch = (dictionary, word) => {
+
+  let start = 0
+  let stop = dictionary.length - 1
+  let middle = Math.floor((start + stop) / 2)
+
+  while (dictionary[middle] !== word && start < stop) {
+    if (word < dictionary[middle]) {
+      stop = middle - 1
+    } else {
+      start = middle + 1
+    }
+
+    middle = Math.floor((start + stop) / 2)
+  }
+  return (dictionary[middle] !== word) ? -1 : middle
+}
+
+const dict = ['abet', 'aide', 'albatross', 'beta', 'charlie', 'delta', 'echo', 'elephant', 'gorilla', 'mammal', 'neptune', 'prepare', 'solar', 'tetra', 'valuable', 'zeta'];
+
+console.log(wordSearch(dict, 'albatross'));
+
+
+2. You work at a pet store, and a child has asked you to net the only white-spotted goldfish from the fish tank. Write a program that will help you net the right fish.
+
+A:
+
+let tankContents = ['yellow guppy', 'white-spotted goldfish', 'green beta', 'orange clownfish', 'purple beta', 'yellow goldfish'];
+
+const getFish = (tankContents, targetFish) => {
+  
+   for(let i = 0; i < tankContents.length; i++) {
+     if(tankContents[i] === targetFish){
+       return "Here's your fish!"
+     }
+   }
+   return "Sorry we don't have that fish.";
+ };
+
+console.log(getFish(tankContents, 'white-spotted goldfish'));
